@@ -9,7 +9,10 @@
     "dev:langchain": "tsx src/langchain-demo.ts",
     "dev:chain": "tsx src/chain-demo.ts",
     "dev:tools": "tsx src/langchain-tools-demo.ts",
-    "dev:agent": "tsx src/agent-demo.ts"
+    "dev:agent": "tsx src/agent-demo.ts",
+    "dev:graph": "tsx src/graph-demo.ts",
+    "dev:graph-branch": "tsx src/graph-branch-demo.ts",
+    "dev:graph-agent": "tsx src/graph-agent-demo.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +20,7 @@
   "dependencies": {
     "@langchain/core": "^1.3.4",
     "@langchain/deepseek": "^1.1.21",
+    "@langchain/langgraph": "^1.6.1",
     "dotenv": "^18.0.9",
     "langchain": "^1.6.1",
     "openai": "^7.45.1",

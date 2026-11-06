@@ -1,3 +1,4 @@
+
 import "dotenv/config";
 
 import { ChatDeepSeek } from "@langchain/deepseek";
@@ -54,7 +55,7 @@ const calculatorTool = tool(
         .enum(["add", "subtract", "multiply", "divide"])
         .describe("运算类型"),
     }),
-  },
+  }
 );
 
 // 2. 创建模型
@@ -71,13 +72,15 @@ const model = new ChatDeepSeek({
 const tools = [calculatorTool];
 const modelWithTools = model.bindTools(tools);
 
-const toolByName = new Map(tools.map((item) => [item.name, item]));
+const toolByName = new Map(
+  tools.map((item) => [item.name, item])
+);
 
 // 4. Agent 执行循环
 async function runAgent(userInput: string) {
   const messages: BaseMessage[] = [
     new SystemMessage(
-      "你是一个智能助手。涉及数学计算时，必须使用 calculator 工具，不能自己心算。",
+      "你是一个智能助手。涉及数学计算时，必须使用 calculator 工具，不能自己心算。"
     ),
     new HumanMessage(userInput),
   ];
@@ -104,8 +107,10 @@ async function runAgent(userInput: string) {
 
     // 逐个执行模型请求的工具
     for (const toolCall of toolCalls) {
-      console.log(`[模型请求工具] ${toolCall}`, toolCall);
-      console.log(`[模型请求工具] ${toolCall.name}`, toolCall.args);
+      console.log(
+        `[模型请求工具] ${toolCall.name}`,
+        toolCall.args
+      );
 
       const selectedTool = toolByName.get(toolCall.name);
 
@@ -127,12 +132,10 @@ async function runAgent(userInput: string) {
         new ToolMessage({
           content: String(result),
           tool_call_id: toolCall.id,
-        }),
+        })
       );
     }
-    console.dir(messages, { depth: null });
   }
-  
 
   throw new Error("Agent 超过最大执行轮数");
 }

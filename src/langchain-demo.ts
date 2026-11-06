@@ -42,25 +42,6 @@ async function main() {
 
   console.log("\n模型回答：");
   console.log(response.content);
-
-  // 流式输出
-  // const response = await model.stream([
-  //     new SystemMessage("你是一个专业的 TypeScript 技术助手，请使用中文回答。"),
-  //     new HumanMessage("请解释一下 TypeScript 中 unknown 和 any 的区别。"),
-  //   ]);
-  //   for await (const chunk of response) {
-  //     console.log(chunk.content);
-  //   }
-
-  // 批量输出
-//   const response = await model.batch([
-//       "解释一下 Vue 的 ref",
-//   "解释一下 Vue 的 reactive",
-//   "解释一下 Vue 的 computed",
-//   ])
-//   for (const result of response) {
-//   console.log(result.content);
-// }
 }
 
 main().catch(console.error);
